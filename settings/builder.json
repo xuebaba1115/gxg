@@ -2,7 +2,12 @@
   "appKey": "",
   "appSecret": "",
   "encryptJs": true,
-  "excludeScenes": [],
+  "excludeScenes": [
+    "66856a8e-aaff-48b0-9c4d-359516ca8625",
+    "87153b74-d948-4200-9475-f462cd3a0c75",
+    "a5377613-2827-4f79-b142-5293a10e1681"
+  ],
+  "fb-instant-games": {},
   "includeAnySDK": false,
   "includeSDKBox": false,
   "inlineSpriteFrames": true,
@@ -20,18 +25,18 @@
   },
   "packageName": "org.cocos2d.helloworld",
   "privateKey": "",
-  "renderMode": "0",
-  "startScene": "2d2f792f-a40c-49bb-a189-ed176a246e49",
-  "title": "hello_world",
-  "webOrientation": "auto",
-  "wechatgame": {
-    "appid": "wx4a6f0f1d44f64ca8",
-    "orientation": "portrait"
-  },
-  "xxteaKey": "88bb830d-5f93-47",
-  "zipCompressJs": true,
   "qqplay": {
     "orientation": "portrait"
   },
-  "fb-instant-games": {}
+  "renderMode": "0",
+  "startScene": "2d2f792f-a40c-49bb-a189-ed176a246e49",
+  "title": "gxgame",
+  "webOrientation": "landscape",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "https://www.tongqiaocun.com/api/downres",
+    "appid": "wx4a6f0f1d44f64ca8",
+    "orientation": "landscape"
+  },
+  "xxteaKey": "88bb830d-5f93-47",
+  "zipCompressJs": true
 }

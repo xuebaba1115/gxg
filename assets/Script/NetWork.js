@@ -10,16 +10,17 @@ let Network = cc.Class({
     },
 
     ctor() {
-        NetTarget = new cc.EventTarget();;
+        NetTarget = new cc.EventTarget();
     },
 
-    initNetwork() {
+
+    initNetwork(tk) {
         if (this.isInit) {
             cc.log('Network is already inited...');
             return;
         }
         cc.log('Network initSocket...');
-        let host = "ws://118.25.46.180:9000";
+        let host = "wss://"+"www.tongqiaocun.com:9000"+"?token="+tk;
        // let host = "ws://47.104.15.140:3000"
         this.socket = new WebSocket(host);
         this.socket.onopen = (evt) => {

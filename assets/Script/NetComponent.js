@@ -10,15 +10,19 @@ let NetworkComponent = cc.Class({
 
     onEnable() {
         NetTarget.on('net', this.getNetData.bind(this));
-        NetTarget.on('netstart', this.netStart.bind(this));
-        NetTarget.on('netclose', this.netClose.bind(this));
+        NetTarget.once('netstart', this.netStart.bind(this));
+        NetTarget.once('netclose', this.netClose.bind(this));
     },
 
     onDisable() {
-        NetTarget.off('net', this.getNetData.bind(this));
-        NetTarget.off('netstart', this.netStart.bind(this));
-        NetTarget.off('netclose', this.netClose.bind(this));
+
+        cc.log('ondisable')
+        NetTarget.off('net');
+        NetTarget.off('netstart');
+        NetTarget.off('netclose');
     },
+
+
     /**
      * 获取服务端数据
      */
