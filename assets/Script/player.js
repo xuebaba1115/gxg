@@ -36,6 +36,8 @@ cc.Class({
         this._joystickCtrl = this.yaogan.getComponent("JoystickCtrl");
         //获取地图 TiledMap 组件
         this._tiledMap = this.curMap.getComponent('cc.TiledMap');
+        cc.director.getCollisionManager().enabled = true;
+        // cc.director.getCollisionManager().enabledDebugDraw = true;
     },
 
     start: function (err) {
@@ -93,7 +95,7 @@ cc.Class({
                 this.tankRotation(data.player)
                 break;
             case "kill":
-                this.tankRotation(data.player)
+                this.kill(data.player)
                 break;
             case "gameover":
                 this.gameOver(data.player)
@@ -126,18 +128,18 @@ cc.Class({
         if (cc.playData.tankPool.size() > 0) {
             var tank = cc.playData.tankPool.get();
             console.log(player.tankType)
-            switch(player.tankType){
+            switch (player.tankType) {
                 case TankType.normal:
                     tank.getComponent(cc.Sprite).spriteFrame = this.spriteFrames[0];
-                break;
+                    break;
 
                 case TankType.speed:
                     tank.getComponent(cc.Sprite).spriteFrame = this.spriteFrames[1];
-                break;
+                    break;
 
                 case TankType.big:
                     tank.getComponent(cc.Sprite).spriteFrame = this.spriteFrames[2];
-                break;
+                    break;
             }
 
             tank.position = cc.v2(player.pos.x, player.pos.y);
@@ -146,8 +148,8 @@ cc.Class({
             var tankCtrl = tank.getComponent("tank1");
             tankCtrl.tankType = player.tankType;
             //设置坦克属性
-            tankCtrl.speed = this.tankSpeeds[this.tankSpeeds.length-1];
-            tankCtrl.fireTime = this.tankFireTimes[this.tankFireTimes.length-1]
+            tankCtrl.speed = this.tankSpeeds[this.tankSpeeds.length - 1];
+            tankCtrl.fireTime = this.tankFireTimes[this.tankFireTimes.length - 1]
             tankCtrl.die = false;
             tankCtrl.team = player.team;
             tankCtrl.playerID = player.playerID;
@@ -176,6 +178,13 @@ cc.Class({
         playerNode.rotation = angle;
     },
 
+    kill: function (data) {
+        var select = cc.find("/select")
+        if (this._playerID==data.playerID) {
+            select.active = true
+        } 
+        
+    },
     //坦克移动
     tankMove: function (data) {
         // data = cc.globalObj.parseStringToJson(data);
@@ -264,7 +273,7 @@ cc.Class({
 
     gameOver: function (data) {
         cc.log(data)
-        if ( typeof data.playerID === 'undefined') {
+        if (typeof data.playerID === 'undefined') {
             Network.send({ "command": "gameover", "player": { "connid": this._playerID } })
             Network.close()
             cc.playData = null;
@@ -274,6 +283,8 @@ cc.Class({
             cc.playData.playerNodes[data.playerID].destroy()
         }
     },
+
+
     //销毁时调用
     onDestroy: function () {
 

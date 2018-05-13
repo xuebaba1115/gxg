@@ -14,6 +14,10 @@ cc.Class({
             default: TankType.normal,
             type: TankType
         },
+        playername: {
+            default: null,
+            type: cc.RichText
+        },
         //速度
         speed: 320,
 
@@ -47,6 +51,9 @@ cc.Class({
 
     },
 
+    onCollisionEnter: function (other, self) {
+        // console.log('on collision tank enter');
+    },
 
 
     //添加坦克移动动作
@@ -65,7 +72,6 @@ cc.Class({
             this.offset = cc.v2(Math.cos(Math.PI / 180 * angle),
                 Math.sin(Math.PI / 180 * angle));
         }
-
         this.stopMove = false;
     },
 

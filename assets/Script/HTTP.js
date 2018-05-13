@@ -9,7 +9,7 @@ var HTTP = cc.Class({
         userId: 0,
         master_url: URL,
         url: URL,
-        sendRequest: function (path, access,pwd,data, handler, extraUrl) {
+        sendRequest: function (path,data, handler, extraUrl,method,token) {
             var xhr = cc.loader.getXMLHttpRequest();
             xhr.timeout = 5000;
             var str = "?";
@@ -24,11 +24,12 @@ var HTTP = cc.Class({
             }
             var requestURL = extraUrl + path;
             console.log("RequestURL:" + requestURL);
-            xhr.open("GET", requestURL, true);
-            xhr.setRequestHeader( 'Authorization', 'Basic ' +  access + ':' + pwd  )
+            xhr.open(method, requestURL, true);
+            if (token != null) {
+                xhr.setRequestHeader("token",token);
+            }
             if (cc.sys.isNative) {
                 xhr.setRequestHeader("Accept-Encoding", "gzip,deflate", "text/html;charset=UTF-8");
-                xhr.setRequestHeader( 'Authorization', 'Basic ' + window.btoa( 'xlc' + ':' + 'xlc' ) );
             }
 
             xhr.onreadystatechange = function () {

@@ -9,6 +9,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+ 
 
     },
 
@@ -43,8 +44,9 @@ cc.Class({
                                 success: function (result) {
                                     let data = result.data;
                                     console.log(data);
-                                    cc.gameData.token = data["token"]
-                                    cc.gameData.nickname = data["nickName"]
+                                    cc.gameData.token = data["token"];
+                                    cc.gameData.nickname = data["nickName"];
+                                    cc.gameData.pid = data["pid"];
                                     cc.director.loadScene("hall");
 
                                 },
@@ -87,13 +89,22 @@ cc.Class({
         if (cc.sys.isMobile) {
             cc.log("use click weixin")
         } else {
-            cc.gameData.token = "abc"
-            cc.gameData.nickname = "youke"
-            cc.director.loadScene("hall");
+            // cc.gameData.token = "abc"
+            // cc.gameData.nickname = "youke"
+            // cc.director.loadScene("hall");
             // var zz = this.zhanghao.string;
             // var mm = this.passwd.string
-            // cc.vv.http.sendRequest('/api/resource', zz, mm, null, this.loging)
+            cc.vv.http.sendRequest('/api/addyouke', null, this.tt,null,"POST")
         }
     },
+
+    tt: function (data) {
+        console.log(data)
+        cc.gameData.token = data.token
+        cc.gameData.pid = data.pid
+        cc.gameData.nickname = "youke"
+        cc.director.loadScene("hall");
+        
+    }
 
 });

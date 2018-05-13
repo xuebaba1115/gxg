@@ -36,17 +36,52 @@ cc.Class({
     bulletMove: function () {
         //偏移
         var angle = 90 - this.node.rotation;
-        if(angle==0 || angle==180 || angle==90){
-            this.offset = cc.v2(Math.floor(Math.cos(Math.PI/180*angle)), 
-                                Math.floor(Math.sin(Math.PI/180*angle)));
-        }else if(angle==270){
-            this.offset = cc.v2(Math.ceil(Math.cos(Math.PI/180*angle)),
-                                Math.floor(Math.sin(Math.PI/180*angle)));
-        }else {
-            this.offset = cc.v2(Math.cos(Math.PI/180*angle),
-                                Math.sin(Math.PI/180*angle));
+        if (angle == 0 || angle == 180 || angle == 90) {
+            this.offset = cc.v2(Math.floor(Math.cos(Math.PI / 180 * angle)),
+                Math.floor(Math.sin(Math.PI / 180 * angle)));
+        } else if (angle == 270) {
+            this.offset = cc.v2(Math.ceil(Math.cos(Math.PI / 180 * angle)),
+                Math.floor(Math.sin(Math.PI / 180 * angle)));
+        } else {
+            this.offset = cc.v2(Math.cos(Math.PI / 180 * angle),
+                Math.sin(Math.PI / 180 * angle));
         }
     },
+
+
+    onCollisionEnter: function (other, self) {
+        // if(other.tag==2){
+        //     let bulletid=this.node.getComponent("BulletScript")
+        //     let tankid=other.node.getComponent("tank1")
+        //     if (bulletid != null && tankid.playerID == bulletid.playerID) {
+        //         console.log('on collision bullet enter');
+        //     } else {
+        //         this.node.destroy();
+        //     }
+
+        // }
+        switch (other.tag) {
+            case 2:
+                let bulletid = this.node.getComponent("BulletScript")
+                let tankid = other.node.getComponent("tank1")
+                if (bulletid != null && tankid.playerID == bulletid.playerID) {
+                    // console.log('on collision bullet enter');
+                    // console.log(tankid.playerID)
+                    
+                } else {
+                    Network.send({ "command": "kill", "player": { "connid": tankid.playerID } });
+                    this.node.destroy();
+                    other.node.destroy();
+                }
+                break;
+
+            default:
+                this.node.destroy();
+                break;
+        }
+
+    },
+
 
     //子弹爆炸
     // bulletBoom: function () {
@@ -57,8 +92,8 @@ cc.Class({
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
         //移动
-        this.node.x += this.offset.x*this.speed*dt;
-        this.node.y += this.offset.y*this.speed*dt;
+        this.node.x += this.offset.x * this.speed * dt;
+        this.node.y += this.offset.y * this.speed * dt;
 
         //检测碰撞
         // var rect = this.node.getBoundingBox();
