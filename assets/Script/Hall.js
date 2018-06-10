@@ -32,14 +32,12 @@ cc.Class({
 
     gototankgame: function(){
         cc.director.loadScene("gameB");
-
-
     },
 
     chooce_game: function () {
         // cc.gameData.token
         // cc.gameData.pid
-        cc.vv.http.sendRequest('/api/creatroom', null, this.goto_initroom,null,"GET",cc.gameData.token)
+        cc.vv.http.sendRequest('/api/creatroom', {token:cc.gameData.token}, this.goto_initroom,null,"GET")
     },
 
     goto_initroom: function(data){
@@ -48,13 +46,24 @@ cc.Class({
         cc.gameData.command='init_room';
         cc.director.loadScene("mjgame");
     },
-    goto_joinroom: function(){
-        cc.log(this.roomNum.string)
 
-        
-        cc.gameData.roomid=this.roomNum.string;
-        cc.gameData.command='join_room';
-        cc.director.loadScene("mjgame");
+
+    joinroom: function (data,oldroomid) {
+        console.log(oldroomid)
+        if (oldroomid==undefined || cc.gameData==null) {
+            cc.vv.http.sendRequest('/api/creatroom', {"roomid":this.roomNum.string,token:cc.gameData.token}, this.goto_joinroom,null,"GET")
+        } else {
+            cc.vv.http.sendRequest('/api/creatroom', {"roomid":oldroomid,token:cc.gameData.token}, this.goto_joinroom,null,"GET")
+        }
+    },    
+    goto_joinroom: function(data){
+        console.log(data)
+        if (data.errcode==0) {
+            console.log(data.roomstat)
+            cc.gameData.command='join_room';
+            cc.gameData.roomid=data.roomstat;
+            cc.director.loadScene("mjgame");
+        }
     }
 
     // initwss: function (ret) {
