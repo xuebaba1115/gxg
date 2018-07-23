@@ -37,14 +37,24 @@ cc.Class({
     chooce_game: function () {
         // cc.gameData.token
         // cc.gameData.pid
-        cc.vv.http.sendRequest('/api/creatroom', {token:cc.gameData.token}, this.goto_initroom,null,"GET")
+        cc.vv.http.sendRequest('/api/creatroom', {token:cc.gameData.token}, this.goto_initroom.bind(this),null,"GET")
     },
 
     goto_initroom: function(data){
         console.log(data)
-        cc.gameData.roomid=data.roomid;
-        cc.gameData.command='init_room';
-        cc.director.loadScene("mjgame");
+        if (data.errcode==0  ||data.errcode==1) {
+            cc.gameData.roomid=data.roomstat;
+            cc.gameData.command='join_room';
+            cc.director.loadScene("mjgame");    
+        } else if(data.errcode==2){
+            cc.vv.http.sendRequest('/api/delroomid', {token:cc.gameData.token}, null,null,"GET")
+            cc.vv.http.sendRequest('/api/creatroom', {token:cc.gameData.token}, this.goto_initroom.bind(this),null,"GET")
+        }else{
+            cc.gameData.roomid=data.roomstat;
+            cc.gameData.command='init_room';
+            cc.director.loadScene("mjgame");
+        }        
+
     },
 
 

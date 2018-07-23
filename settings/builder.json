@@ -4,8 +4,7 @@
   "encryptJs": true,
   "excludeScenes": [
     "66856a8e-aaff-48b0-9c4d-359516ca8625",
-    "87153b74-d948-4200-9475-f462cd3a0c75",
-    "a5377613-2827-4f79-b142-5293a10e1681"
+    "c9b19849-9c19-4ff3-8e55-0593dd761bb8"
   ],
   "fb-instant-games": {},
   "includeAnySDK": false,
@@ -29,7 +28,7 @@
     "orientation": "portrait"
   },
   "renderMode": "0",
-  "startScene": "2d2f792f-a40c-49bb-a189-ed176a246e49",
+  "startScene": "e7a95149-cf68-4481-ad4a-298375b4f508",
   "title": "gxgame",
   "webOrientation": "landscape",
   "wechatgame": {

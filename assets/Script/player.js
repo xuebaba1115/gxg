@@ -73,7 +73,7 @@ cc.Class({
     },
 
     netStart(event) {
-        Network.send({ "command": "init", "name": cc.gameData.nickname, "x": 300, "y": 150, "playerType": 1, "angle": 90 })
+        Network.send({ "command": "init", "name": cc.gameData.nickname, "x": 300+Math.random()*15, "y": Math.random()*150, "playerType": 1, "angle": 90 })
     },
 
 
@@ -190,6 +190,9 @@ cc.Class({
         // data = cc.globalObj.parseStringToJson(data);
         var pos = data.pos;
         var playerNode = cc.playData.playerNodes[data.playerID];
+        console.log(playerNode)
+        // var action = cc.moveTo(0, cc.p(pos.x, pos.y));
+        // playerNode.runAction(action);
         playerNode.x = pos.x;
         playerNode.y = pos.y;
 

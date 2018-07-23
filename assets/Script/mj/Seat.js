@@ -26,6 +26,10 @@ cc.Class({
         _isZhuang:false,
         _userId:null,    
         _onlyone:-1,    
+        touimage: {
+            default: [],
+            type: [cc.SpriteFrame]
+        },
 
     },
 
@@ -56,6 +60,9 @@ cc.Class({
         this._userName = name;
         this._userId=pid;
         this._onlyone=onlyone;
+        this._sprIcon=this.node.getChildByName("icon");
+        this._sprIcon.getComponent(cc.Sprite).spriteFrame=this.touimage[onlyone-1]
+        console.log(this._sprIcon)
         this.refresh();    
     },    
 

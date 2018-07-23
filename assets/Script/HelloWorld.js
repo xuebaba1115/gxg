@@ -86,15 +86,16 @@ cc.Class({
     },
 
     loging: function () {
-        if (cc.sys.isMobile) {
-            cc.log("use click weixin")
-        } else {
-            // cc.gameData.token = "abc"
-            // cc.gameData.nickname = "youke"
-            // cc.director.loadScene("hall");
-            // var zz = this.zhanghao.string;
-            // var mm = this.passwd.string
+        if (cc.sys.isBrowser) {
             cc.vv.http.sendRequest('/api/addyouke', null, this.tt,null,"POST")
+            cc.log("use click weixin")
+        // } else {
+        //     // cc.gameData.token = "abc"
+        //     // cc.gameData.nickname = "youke"
+        //     // cc.director.loadScene("hall");
+        //     // var zz = this.zhanghao.string;
+        //     // var mm = this.passwd.string
+        //     cc.vv.http.sendRequest('/api/addyouke', null, this.tt,null,"POST")
         }
     },
 

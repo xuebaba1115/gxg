@@ -21,7 +21,7 @@
     "_active": true,
     "_components": [],
     "_prefab": null,
-    "_id": "2d2f792f-a40c-49bb-a189-ed176a246e49",
+    "_id": "e7a95149-cf68-4481-ad4a-298375b4f508",
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
@@ -45,7 +45,7 @@
     "_globalZOrder": 0,
     "_opacityModifyRGB": false,
     "groupIndex": 0,
-    "autoReleaseAssets": true
+    "autoReleaseAssets": false
   },
   {
     "__type__": "cc.Node",
@@ -99,8 +99,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 960,
-      "height": 640
+      "width": 1280,
+      "height": 720
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -108,8 +108,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 480,
-      "y": 320
+      "x": 640,
+      "y": 360
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -138,12 +138,12 @@
     ],
     "_prefab": null,
     "_id": "e2e0crkOLxGrpMxpbC4iQg1",
-    "_opacity": 255,
+    "_opacity": 241.48499999999999,
     "_color": {
       "__type__": "cc.Color",
-      "r": 27,
-      "g": 38,
-      "b": 46,
+      "r": 247,
+      "g": 249,
+      "b": 252,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -154,8 +154,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 960,
-      "height": 640
+      "width": 1280,
+      "height": 720
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -208,7 +208,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "410fb916-8721-4663-bab8-34397391ace7"
+      "__uuid__": "ab0708d9-6b62-48f3-bf91-b56613d923c5"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -421,7 +421,7 @@
     "node": {
       "__id__": 9
     },
-    "_enabled": true,
+    "_enabled": false,
     "_useOriginalSize": false,
     "_actualFontSize": 20,
     "_fontSize": 20,
@@ -445,7 +445,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "c0c94869-240c-40fa-857f-590af946c6b9"
+      "__uuid__": "19f1c4c3-0b5e-4766-a7e4-9d63b21a6899"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -480,9 +480,9 @@
     },
     "hoverColor": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 224,
+      "g": 218,
+      "b": 218,
       "a": 255
     },
     "duration": 0.1,
@@ -657,7 +657,7 @@
     "node": {
       "__id__": 15
     },
-    "_enabled": true,
+    "_enabled": false,
     "_useOriginalSize": false,
     "_actualFontSize": 20,
     "_fontSize": 20,
@@ -681,7 +681,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "8d75f4ba-8c92-425c-ae3f-9d795558e960"
+      "__uuid__": "1da6f14a-5259-4938-a2f4-faece46e1770"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -706,7 +706,7 @@
       "__id__": 14
     },
     "_enabled": true,
-    "transition": 2,
+    "transition": 1,
     "pressedColor": {
       "__type__": "cc.Color",
       "r": 255,
@@ -716,9 +716,9 @@
     },
     "hoverColor": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 224,
+      "g": 218,
+      "b": 218,
       "a": 255
     },
     "duration": 0.1,
@@ -745,7 +745,7 @@
       "a": 255
     },
     "_N$normalSprite": {
-      "__uuid__": "8d75f4ba-8c92-425c-ae3f-9d795558e960"
+      "__uuid__": "1da6f14a-5259-4938-a2f4-faece46e1770"
     },
     "_N$pressedSprite": {
       "__uuid__": "36eb94c4-e558-44d0-8ba4-5f1fce52de71"
@@ -785,8 +785,8 @@
     "_enabled": true,
     "_designResolution": {
       "__type__": "cc.Size",
-      "width": 960,
-      "height": 640
+      "width": 1280,
+      "height": 720
     },
     "_fitWidth": false,
     "_fitHeight": true

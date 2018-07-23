@@ -31,6 +31,7 @@ cc.Class({
 
         die: false,
         fireTime: 0.5,
+        moveTime: 0.1,
         bullet: cc.Prefab,
     },
 
@@ -135,17 +136,22 @@ cc.Class({
             return;
         }
         if (!this.stopMove) {
+
             var boundingBox = this.node.getBoundingBox();
-            var rect = cc.rect(boundingBox.xMin + this.offset.x * this.speed * dt * 1.5,
-                boundingBox.yMin + this.offset.y * this.speed * dt * 1.7,
-                boundingBox.size.width,
-                boundingBox.size.height);
+            // var rect = cc.rect(boundingBox.xMin + this.offset.x * this.speed * dt * 1.5,
+            //     boundingBox.yMin + this.offset.y * this.speed * dt * 1.7,
+            //     boundingBox.size.width,
+            //     boundingBox.size.height);
             // this.node.x += this.offset.x * this.speed * dt;
             // this.node.y += this.offset.y * this.speed * dt;
-
             var nextX = this.node.x + this.offset.x * this.speed * dt;
-            var nextY = this.node.y + this.offset.y * this.speed * dt;
-            Network.send({ "command": "move", 'player': { "connid": this.playerID, "pos": { "x": nextX, "y": nextY } } });
+            var nextY = this.node.y + this.offset.y * this.speed * dt
+            this.moveTime -= dt;
+            if (this.moveTime <= 0) {
+                Network.send({ "command": "move", 'player': { "connid": this.playerID, "pos": { "x": nextX, "y": nextY } } });
+                this.moveTime=0.1
+            }
+            // Network.send({ "command": "move", 'player': { "connid": this.playerID, "pos": { "x": nextX, "y": nextY } } });
 
         }
 
